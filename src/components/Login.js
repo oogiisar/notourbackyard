@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { withRouter } from "react-router-dom";
 //import TokenService from '../services/token-service'
 //import AuthApiService from '../services/auth-api-service'
-import { Button, Input } from '../Utils/Utils';
+import { Button, Input, Required } from '../Utils/Utils';
 import './css/Login.css';
 
 class LoginForm extends Component {
@@ -27,8 +27,10 @@ class LoginForm extends Component {
 
     handleSubmitstatic = event =>  {
         event.preventDefault()
-        this.props.handleLogin('true', this.state.user_name)
-        this.props.history.push(`/${this.state.user_name}/cleanup`)
+        this.props.handleLogin('true', this.state.user_name, 'Mongolia')
+        // Will be used later with backend implimentation
+        // this.props.history.push(`/${this.state.user_name}/cleanup`)
+        this.props.history.push(`/1/cleanup`)
     }
 
     
@@ -65,7 +67,7 @@ class LoginForm extends Component {
             </div>
             <div className='user_name'>
             <label htmlFor='LoginForm__user_name'>
-                User name
+                User name <Required />
             </label>
             <Input
                 required
@@ -76,7 +78,7 @@ class LoginForm extends Component {
             </div>
             <div className='password'>
             <label htmlFor='LoginForm__password'>
-                Password
+                Password <Required /> 
             </label>
             <Input
                 required

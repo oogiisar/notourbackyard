@@ -5,6 +5,7 @@ import Overview from './components/Overview';
 import Login from './components/Login';
 import Signup from './components/Signup';
 import Cleanup from './components/Cleanup';
+import NewCleanup from './components/NewCleanup';
 import './App.css';
 import data from './STORE';
 
@@ -15,7 +16,10 @@ class App extends Component {
       this.state = {
         country: 'World',
         region: '',
+        newcountry: '',
+        newregion: '',
         user: null,
+        home_country: null,
         loggedIn: null
       }
 
@@ -33,10 +37,23 @@ class App extends Component {
     })
   }
 
-  handleLogin = (loggedIn, user ) => {
+  getNewCountry = (country) => {
+    this.setState({
+      newcountry: country
+    });
+  }
+
+  getNewRegion = (region) => {
+    this.setState({
+      newregion: region
+    })
+  }
+
+  handleLogin = (loggedIn, user, home_country ) => {
     this.setState({
       loggedIn: loggedIn,
-      user: user
+      user: user,
+      home_country: home_country
     })
   }
 
@@ -49,43 +66,62 @@ class App extends Component {
           user={this.state.user}
         />
 
-        <Route 
-          exact path='/'
-          render={(props) =>
-            <Overview 
-              getCountry={this.getCountry}
-              getRegion={this.getRegion}
-              country={this.state.country}
-              region={this.state.region}
-              data={data}
-            />
-          }
-        />
+        <section id="content">
 
-        <Route 
-          path='/login'
-          render={(props) =>
-            <Login 
-              handleLogin={this.handleLogin}
-            />
-          }
-        />
+          <Route 
+            exact path='/'
+            render={(props) =>
+              <Overview 
+                getCountry={this.getCountry}
+                getRegion={this.getRegion}
+                country={this.state.country}
+                region={this.state.region}
+                data={data}
+              />
+            }
+          />
 
-        <Route
-          path='/signup'
-          render={(props) =>
-            <Signup />
-          }
-        />
+          <Route 
+            path='/login'
+            render={(props) =>
+              <Login 
+                handleLogin={this.handleLogin}
+              />
+            }
+          />
 
-        <Route
-          path='/:user/cleanup'
-          render={(props) =>
-            <Cleanup 
-              user={props.match.params.user}
-            />
-          }
-        />
+          <Route
+            path='/signup'
+            render={(props) =>
+              <Signup />
+            }
+          />
+
+          <Route
+            path='/:user/cleanup'
+            render={(props) =>
+              <Cleanup 
+                user={this.state.user}
+                home_country={this.state.home_country}
+                data={data}
+              />
+            }
+          />
+
+          <Route
+            path='/:user/newcleanup'
+            render={(props) =>
+              <NewCleanup 
+                user={this.state.user}
+                data={data}
+                getNewCountry={this.getNewCountry}
+                getNewRegion={this.getNewRegion}
+                newcountry={this.state.newcountry}
+                newregion={this.state.newregion}
+              />
+            }
+          />
+        </section>
 
       </main>
     );

@@ -37,15 +37,15 @@ class RegistrationForm extends Component {
 }
 
   render() {
-    const { error } = this.state
+    //const { error } = this.state
     return (
       <form
         className='RegistrationForm'
         onSubmit={this.handleSubmit.bind(this)}
       >
-        <div role='alert'>
+        {/*<div role='alert'>
           {error && <p className='red'>{error}</p>}
-        </div>
+        </div>*/}
         <div className='user_name'>
           <label htmlFor='RegistrationForm__user_name'>
             User name <Required />
