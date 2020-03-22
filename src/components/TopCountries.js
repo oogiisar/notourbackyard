@@ -15,11 +15,11 @@ class TopCountries extends Component {
             <>
                 <p>The Top 5 countries are</p>
                 <ul>
-                    <li>Mongolia - 73829</li>
-                    <li>United States - 56783</li>
-                    <li>Belize  - 47892</li>
-                    <li>Chile - 23849</li>
-                    <li>Chad -  1239</li>
+                    <li>Turkey - 923320</li>
+                    <li>Mongolia - 158434</li>
+                    <li>Chad -  525320</li>
+                    <li>Chile - 52720</li>
+                    <li>United States - 8372</li>
                 </ul>
             </>
         )
