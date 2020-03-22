@@ -6,6 +6,7 @@ import Login from './components/Login';
 import Signup from './components/Signup';
 import Cleanup from './components/Cleanup';
 import NewCleanup from './components/NewCleanup';
+import TopCountries from './components/TopCountries';
 import './App.css';
 import data from './STORE';
 
@@ -71,13 +72,16 @@ class App extends Component {
           <Route 
             exact path='/'
             render={(props) =>
-              <Overview 
-                getCountry={this.getCountry}
-                getRegion={this.getRegion}
-                country={this.state.country}
-                region={this.state.region}
-                data={data}
-              />
+              <>
+                <Overview 
+                  getCountry={this.getCountry}
+                  getRegion={this.getRegion}
+                  country={this.state.country}
+                  region={this.state.region}
+                  data={data}
+                />
+                <TopCountries />
+              </>
             }
           />
 
@@ -121,6 +125,7 @@ class App extends Component {
               />
             }
           />
+
         </section>
 
       </main>

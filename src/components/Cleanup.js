@@ -6,9 +6,8 @@ import './css/Cleanup.css';
 class Cleanup extends Component {
     render() {
         let data = this.props.data
-        let home_country = this.props.home_country
 
-        let user = data.data[home_country].user.find( 
+        let user = data.data.user.find( 
             ({ uid }) =>
                 // set this to by dynamic with backend implimentation
                 uid === 1

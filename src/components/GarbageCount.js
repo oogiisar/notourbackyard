@@ -6,15 +6,20 @@ class GarbageCount extends Component {
         let country = this.props.country
         let region = this.props.region
 
-        if(data.data[country] == null) {
+        let currentCountry = 
+            data.data.countries.find( c => 
+                c[country]
+            ) 
+
+        if(currentCountry == null) {
             return 0
         } else if(Object.entries(region).length === 0) {
-            return data.data[country].garbage_pieces
-        } else if(data.data[country].Regions[region] == null) {
+            return currentCountry[country].garbage_pieces
+        } else if(currentCountry[country].Regions[region] == null) {
             return 0
         }
         
-        return data.data[country].Regions[region].garbage_pieces
+        return currentCountry[country].Regions[region].garbage_pieces
     }
 
     location () {
