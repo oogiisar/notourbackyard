@@ -14,7 +14,7 @@ class GarbageCount extends Component {
         if(currentCountry == null) {
             return 0
         } else if(Object.entries(region).length === 0) {
-            return currentCountry[country].garbage_pieces
+            return currentCountry[country].garbage_pieces.toLocaleString(navigator.language, { minimumFractionDigits: 0})
         } else if(currentCountry[country].Regions[region] == null) {
             return 0
         }

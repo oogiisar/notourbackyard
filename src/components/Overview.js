@@ -10,6 +10,7 @@ class Overview extends Component {
             <div className="overview_head">
                 <h1>Not Our Backyard</h1>
                 <h3>A place to share your efforts to clean up your community</h3>
+                <iframe src='https://www.theworldcounts.com/embed/challenges/104?background_color=white&color=black&font_family=%22Helvetica+Neue%22%2C+Arial%2C+sans-serif&font_size=14'></iframe>
 
                 <CountrySelector 
                     getCountry={this.props.getCountry}
