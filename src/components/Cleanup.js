@@ -1,10 +1,23 @@
 import React, { Component } from 'react';
 import { Button } from '../Utils/Utils';
-import { Link } from 'react-router-dom';
+import { withRouter } from "react-router-dom";
+import TokenService from '../services/token-service';
 import './css/Cleanup.css';
 
 class Cleanup extends Component {
+
+    handleSubmit = (event) => {
+        event.preventDefault()
+        const getAuthToken = TokenService.getAuthToken()
+        const token = TokenService.parseJwt(getAuthToken)
+        const user = token.user_is
+
+        this.props.history.push(`/${user}/newcleanup`)
+
+    }
+    
     render() {
+
         let data = this.props.data
 
         let user = data.data.user.find( 
@@ -37,19 +50,20 @@ class Cleanup extends Component {
 
 
         return(
-            <section className="myCleanups">
+            <form 
+                className="myCleanups"
+                onSubmit={this.handleSubmit}
+            >
                 <h1>My Cleanups</h1>
                 <section id="cleanupBox">
                     {content}
                 </section>
-                <Link to={`/${this.props.user}/newcleanup`}>
-                    <Button type='submit'>
-                        New Cleanup
-                    </Button>
-                </Link>
-            </section>
+                <Button type='submit'>
+                    New Cleanup
+                </Button>
+            </form>
         )
     };
 }
 
-export default Cleanup;
+export default withRouter(Cleanup);

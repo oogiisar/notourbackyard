@@ -1,13 +1,25 @@
 import React, { Component } from 'react';
 import { Button } from '../Utils/Utils';
-import { Link } from 'react-router-dom';
 import { CountryDropdown, RegionDropdown } from 'react-country-region-selector';
+import TokenService from '../services/token-service';
 import DatePicker from 'react-date-picker';
+import { withRouter } from "react-router-dom";
 import './css/NewCleanup.css';
 
 //Add new data functionality with backend build
 
 class NewCleanup extends Component {
+
+    handleSubmit = (event) => {
+        event.preventDefault()
+        const getAuthToken = TokenService.getAuthToken()
+        const token = TokenService.parseJwt(getAuthToken)
+        const user = token.user_is
+
+        this.props.history.push(`/${user}/cleanup`)
+
+    }
+
     state = {
         date: new Date()
       }
@@ -109,19 +121,20 @@ class NewCleanup extends Component {
             </section>
 
         return(
-            <section className="myCleanups">
+            <form 
+                onSubmit={this.handleSubmit}
+                className="myCleanups"
+            >
                 <h1>My Cleanups</h1>
                 <section id="cleanupBox">
                     {content}
                 </section>
-                <Link to={`/${this.props.user}/cleanup`}>
-                    <Button type='submit'>
-                        Submit
-                    </Button>
-                </Link>
-            </section>
+                <Button type='submit'>
+                    Submit
+                </Button>
+            </form>
         )
     };
 }
 
-export default NewCleanup;
+export default withRouter(NewCleanup);

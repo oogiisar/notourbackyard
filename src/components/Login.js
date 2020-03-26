@@ -1,79 +1,62 @@
 import React, { Component } from 'react';
 import { withRouter } from "react-router-dom";
-//import TokenService from '../services/token-service'
-//import AuthApiService from '../services/auth-api-service'
+import TokenService from '../services/token-service';
+import AuthApiService from '../services/auth-api-service';
 import { Button, Input, Required } from '../Utils/Utils';
 import './css/Login.css';
 
 class LoginForm extends Component {
-    constructor(props){
-        super(props)
-        this.state = {
-          user_name: null
-        }
-  
-    }
     
-    static defaultProps = {
-        onLoginSuccess: () => {}
+
+    onLoginSuccess = (authToken) => {
+        let user = TokenService.parseJwt(authToken)
+        this.props.handleLogin()
+        this.props.history.push(`/${user.user_is}/cleanup`)
     }
 
     state = { error: null }
-
-    handleUserName = event => {
-        const user_name = event.target
-        this.setState({user_name: user_name.value})
-    }
-
-    handleSubmitstatic = event =>  {
-        event.preventDefault()
-        this.props.handleLogin('true', this.state.user_name, 'Mongolia')
-        // Will be used later with backend implimentation
-        // this.props.history.push(`/${this.state.user_name}/cleanup`)
-        this.props.history.push(`/1/cleanup`)
-    }
-
     
 
-    /*handleSubmitJwtAuth = event => {
+    handleSubmitJwtAuth = event => {
         event.preventDefault()
         this.setState({ error: null })
-        const { user_name, password } = event.target
+        const { email, password } = event.target
         
         AuthApiService.postLogin({
-        user_name: user_name.value,
+        email: email.value,
         password: password.value,
         })
         .then(res => {
-            user_name.value = ''
+            email.value = ''
             password.value = ''
+            console.log(res.authToken)
             TokenService.saveAuthToken(res.authToken)
-            this.props.onLoginSuccess()
+            this.onLoginSuccess(res.authToken)
         })
         .catch(res => {
             this.setState({ error: res.error })
         })
-    }*/
+    }
 
     render() {
         const { error } = this.state
         return (
         <form
             className='LoginForm'
-            onSubmit={this.handleSubmitstatic.bind(this)}
+            onSubmit={this.handleSubmitJwtAuth}
         >
             <div role='alert'>
             {error && <p className='red'>{error}</p>}
             </div>
-            <div className='user_name'>
-            <label htmlFor='LoginForm__user_name'>
-                User name <Required />
+            <div className='email'>
+            <label htmlFor='LoginForm__email'>
+                Email <Required />
             </label>
             <Input
                 required
                 onChange={this.handleUserName}
-                name='user_name'
-                id='LoginForm__user_name'>
+                name='email'
+                id='LoginForm__email'>
             </Input>
             </div>
             <div className='password'>

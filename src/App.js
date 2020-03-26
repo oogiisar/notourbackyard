@@ -4,6 +4,8 @@ import Header from './components/Header';
 import Overview from './components/Overview';
 import Login from './components/Login';
 import Signup from './components/Signup';
+import PrivateRoute from './Utils/PrivateRoute'
+import PublicOnlyRoute from './Utils/PublicOnlyRoute'
 import Cleanup from './components/Cleanup';
 import NewCleanup from './components/NewCleanup';
 import TopCountries from './components/TopCountries';
@@ -50,11 +52,9 @@ class App extends Component {
     })
   }
 
-  handleLogin = (loggedIn, user, home_country ) => {
+  handleLogin = (loggedIn) => {
     this.setState({
-      loggedIn: loggedIn,
-      user: user,
-      home_country: home_country
+      loggedIn: loggedIn
     })
   }
 
@@ -64,14 +64,13 @@ class App extends Component {
       <main className='App'>
         <Header 
           loggedIn={this.state.loggedIn}
-          user={this.state.user}
         />
 
         <section id="content">
 
           <Route 
             exact path='/'
-            render={(props) =>
+            component={(props) =>
               <>
                 <Overview 
                   getCountry={this.getCountry}
@@ -85,36 +84,35 @@ class App extends Component {
             }
           />
 
-          <Route 
+          <PublicOnlyRoute 
             path='/login'
-            render={(props) =>
+            component={(props) =>
               <Login 
                 handleLogin={this.handleLogin}
               />
             }
           />
 
-          <Route
+          <PublicOnlyRoute
             path='/signup'
-            render={(props) =>
+            component={(props) =>
               <Signup />
             }
           />
 
-          <Route
+          <PrivateRoute
             path='/:user/cleanup'
-            render={(props) =>
+            component={(props) =>
               <Cleanup 
-                user={this.state.user}
                 home_country={this.state.home_country}
                 data={data}
               />
             }
           />
 
-          <Route
+          <PrivateRoute
             path='/:user/newcleanup'
-            render={(props) =>
+            component={(props) =>
               <NewCleanup 
                 user={this.state.user}
                 data={data}

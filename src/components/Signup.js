@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Button, Input, Required } from '../Utils/Utils';
 import { withRouter } from "react-router-dom";
-//import AuthApiService from '../../services/auth-api-service';
+import { CountryDropdown } from 'react-country-region-selector';
+import AuthApiService from '../services/auth-api-service';
 import './css/Signup.css';
 
 
@@ -10,22 +11,33 @@ class RegistrationForm extends Component {
     onRegistrationSuccess: () => {}
   }
 
-  state = { error: null }
+  constructor (props) {
+    super(props)
+    this.state = { 
+      error: null,
+      country: ''
+    }
+  }
+
+  selectCountry (val) {
+    this.setState({ country: val})
+  }
+
+  
 
   handleSubmit = event => {
     event.preventDefault()
-    this.props.history.push(`/login`)
-    /*const { user_name, email, password, home_country } = event.target
+    const { display_name, email, password, home_country } = event.target
 
     this.setState({ error: null })
         AuthApiService.postUser({
-            user_name: user_name.value,
+            display_name: display_name.value,
             email: email.value,
             password: password.value,
             home_country: home_country.value,
     })
     .then(user => {
-        user_name.value = ''
+        display_name.value = ''
         email.value = ''
         password.value = ''
         home_country.value = ''
@@ -33,28 +45,29 @@ class RegistrationForm extends Component {
   })
   .catch(res => {
     this.setState({ error: res.error })
-  })*/
+  })
 }
 
   render() {
-    //const { error } = this.state
+    const country = this.state.country;
+    const error  = this.state.error
     return (
       <form
         className='RegistrationForm'
         onSubmit={this.handleSubmit.bind(this)}
       >
-        {/*<div role='alert'>
+        <div role='alert'>
           {error && <p className='red'>{error}</p>}
-        </div>*/}
-        <div className='user_name'>
-          <label htmlFor='RegistrationForm__user_name'>
-            User name <Required />
+        </div>
+        <div className='display_name'>
+          <label htmlFor='RegistrationForm__display_name'>
+            Display Name <Required />
           </label>
           <Input
-            name='user_name'
+            name='display_name'
             type='text'
             required
-            id='RegistrationForm__user_name'>
+            id='RegistrationForm__display_name'>
           </Input>
         </div>
         <div className='email'>
@@ -81,14 +94,15 @@ class RegistrationForm extends Component {
         </div>
         <div className='home_country'>
           <label htmlFor='RegistrationForm__home_country'>
-            Nickname
+            Home  Country
           </label>
-          <Input
-            name='home_country'
-            type='text'
-            required
-            id='RegistrationForm__home_country'>
-          </Input>
+          <div>
+            <CountryDropdown
+              value={country}
+              name="home_country"
+              onChange={(val) => this.selectCountry(val)}
+            />
+          </div>
         </div>
         <Button type='submit'>
             Register

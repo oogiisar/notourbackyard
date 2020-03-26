@@ -1,12 +1,19 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import TokenService from '../services/token-service'
 import './css/Header.css';
 
 class Header extends Component {
+    getUser() {
+        const getAuthToken = TokenService.getAuthToken()
+        const token = TokenService.parseJwt(getAuthToken)
+        const user = token.user_is
+        return user
+    }
 
     accountStatus = () => {
-        if(this.props.loggedIn  === 'true') {
-            return <Link to={`/${this.props.user}/cleanup`} className="account_nav">My Account</Link>
+        if(TokenService.hasAuthToken()) {
+            return <Link to={`/${this.getUser()}/cleanup`} className="account_nav">My Account</Link>
         } else {
             return (
                 <>
