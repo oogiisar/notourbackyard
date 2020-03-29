@@ -29,7 +29,6 @@ class LoginForm extends Component {
         .then(res => {
             email.value = ''
             password.value = ''
-            console.log(res.authToken)
             TokenService.saveAuthToken(res.authToken)
             this.onLoginSuccess(res.authToken)
         })

@@ -1,32 +1,50 @@
 import React, { Component } from 'react';
+import notOurBackyardApiService from '../services/notourbackyard-api-service';
 
 class GarbageCount extends Component {
-    amount () {
-        let data = this.props.data
-        let country = this.props.country
-        let region = this.props.region
-
-        let currentCountry = 
-            data.data.countries.find( c => 
-                c[country]
-            ) 
-
-        if(currentCountry == null) {
-            return 0
-        } else if(Object.entries(region).length === 0) {
-            return currentCountry[country].garbage_pieces
-        } else if(currentCountry[country].Regions[region] == null) {
-            return 0
+    constructor(props){
+        super(props)
+        this.state = {
+            amount: null
         }
-        
-        return currentCountry[country].Regions[region].garbage_pieces
+  
+    }
+
+    componentDidMount() {
+        notOurBackyardApiService.getCleanupCount(this.props.country)
+        .then(amount => this.setState({amount: amount}))
+    }
+
+    componentDidUpdate(prevProps) {
+        if(prevProps.country !== this.props.country) {
+            notOurBackyardApiService.getCleanupCount(this.props.country)
+            .then(amount => this.setState({amount: amount}))
+        } else if( prevProps.region !== this.props.region ) {
+            notOurBackyardApiService.getCleanupCount(`${this.props.country}/${this.props.region}`)
+            .then(amount => this.setState({amount: amount}))
+        }
+    }
+    
+    amount () {
+        let country = this.props.country
+
+
+        if(country == null) {
+            return 0
+        } else {
+            if(this.state.amount == null || this.state.amount.length === 0) {
+                return 0
+            } else {
+                return this.state.amount[0].sum.toLocaleString(navigator.language, { minimumFractionDigits: 0})
+            }
+        } 
     }
 
     location () {
         let country = this.props.country
         let region = this.props.region
         let world = country === 'World' ? 'the ' : ''
-        let location = Object.entries(region).length === 0 ? country : country + ', ' + region
+        let location = region == null ? country : country + ', ' + region
         return world + location
     }
 

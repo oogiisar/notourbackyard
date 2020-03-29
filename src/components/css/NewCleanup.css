@@ -19,3 +19,7 @@
 .quantity {
     width: 40px;
 }
+
+.status {
+    color: red;
+}

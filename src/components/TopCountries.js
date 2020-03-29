@@ -1,25 +1,41 @@
 import React, { Component } from 'react';
+import notOurBackyardApiService from '../services/notourbackyard-api-service';
 
 class TopCountries extends Component {
 
-    render() {
-    
+    constructor(props){
+        super(props)
+        this.state = {
+            countries: null
+        }
+  
+    }
 
-        // Fetch to endpoint that retrieves top countris
-        // Functionality will be implimented on the backend 
-        // Database will select country name and all countries net cleanups 
-        // Database will sort on the net cleanups column
-        // Limit results to 5
+    componentDidMount() {
+        notOurBackyardApiService.getTopCountries()
+        .then(countries => this.setState({countries: countries}))
+    }
+
+    getCountries() {
+        let topCountries = []
+
+        if(this.state.countries == null) {
+            return ''
+        } else {
+            topCountries = this.state.countries.map( (country, i) => (
+                <li key={i}>{country.country_name} - {country.sum.toLocaleString(navigator.language, { minimumFractionDigits: 0})}</li>
+            ))
+            return topCountries
+        }
+    }
+
+    render() {
 
         return(
             <>
                 <p>The Top 5 countries are</p>
                 <ul>
-                    <li>Turkey - 923320</li>
-                    <li>Mongolia - 158434</li>
-                    <li>Chad -  525320</li>
-                    <li>Chile - 52720</li>
-                    <li>United States - 8372</li>
+                    {this.getCountries()}
                 </ul>
             </>
         )
