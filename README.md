@@ -1,68 +1,86 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Not Our Backyard
 
-## Available Scripts
+Not Our Backyard is built as a place for people to come together and help clean up their communities.  The overview allows people to see how much garbage has been cleaned up different places around the world. Anyone can create an account and start tracking the garbage that they clean up. Let's all work together to make the world a cleaner place.
 
-In the project directory, you can run:
+## Live Demo
 
-### `npm start`
+[Not Our Backyard](https://notourbackyard.now.sh/)
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+*Site currently hosted on free teir.  If there is no data please reload  as database is starting back up*
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+##  API Endpoints
 
-### `npm test`
+### /api/cleanups
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+**GET** 
+cleanups for a specified user id *protected endpoint*
+`/id`
 
-### `npm run build`
+**POST** 
+Add new cleanup for specified user id *protected endpoint*
+`/id`
+The following data is required from the form
+Location,
+user name,
+type of trash,
+quantity
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+### /api/overview
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+**GET** 
+Gets data for existing cleanups *Public*
+`/country`
+Retrieve cleanup data for a specific country or the world
 
-### `npm run eject`
+`/country/region`
+Retrieve cleanup data for a specific country and region
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### /api/auth
+**POST**
+`/login`
+Send login data to retrieve JWT on succesfull authentication
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### /api/users
+**POST**
+`/`
+Add a new user to the database. The following data is required from the form
+Name,
+password,
+email,
+home country
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+**GET**
+`/type`
+Get the garbage types from the database
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Preview
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Overview
+![overview page](https://imgur.com/a/pFTLWqS "Overview Page")
 
-### Code Splitting
+### Signup  Page
+![signup  page](https://imgur.com/a/XQ7mbir "Signup Page")
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+### Login Page
+![login page](https://imgur.com/a/APiapi6 "Login Page")
 
-### Analyzing the Bundle Size
+### Cleanup Page
+![cleanup page](https://imgur.com/a/5vLjSEv "Cleanup Page")
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+### Add Cleanup Page
+![new cleanup page](https://imgur.com/a/2kWZdFr "New Cleanup Page")
 
-### Making a Progressive Web App
+## Built With
+* This application uses the following technology
++ HTML
++ CSS
++ React
++ Jest
++ Chai/Mocha
++ Express
++ PostgreSQL
++ Knex
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify

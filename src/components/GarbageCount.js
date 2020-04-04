@@ -35,7 +35,7 @@ class GarbageCount extends Component {
             if(this.state.amount == null || this.state.amount.length === 0) {
                 return 0
             } else {
-                return this.state.amount[0].sum.toLocaleString(navigator.language, { minimumFractionDigits: 0})
+                return this.state.amount[0].sum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
             }
         } 
     }
@@ -53,10 +53,7 @@ class GarbageCount extends Component {
     render() {
 
         return(
-            <div>
-                <p>{this.amount()} Pieces of garbage have been picked up in {this.location()}</p>
-                <p></p>
-            </div>
+            <p id="garbage_count">{this.amount()} kg of garbage picked up in {this.location()}</p>
         )
     };
 }

@@ -1,24 +1,45 @@
-#logo {
-    float: left;
-    margin-left: 20px;
+.logo {
+  float: left;
+  margin-left: 10px;
+  margin-top: 5px;
+  width: 60px;
+}
+
+.account_nav {
+  float: right;
+  margin-right: 20px;
+  margin-top: 20px;
+  font-size: 1.25em;
+  color: white;
+}
+
+nav {
+  padding: 1% 0;
+  background-color: rgb(98, 165, 48);
+  height: 80px;
+}
+
+nav > a {
+  color: black;
+  text-decoration: none; 
+}
+
+nav > a:hover {
+  color: white;
+}
+
+@media only screen and (min-width: 650px) {
+  nav {
+    height: 110px;
   }
   
+  .logo {
+    width: 80px;
+  }
+
   .account_nav {
-    float: right;
-    margin-right: 20px;
+    font-size: 1.5em;
+    margin-top: 30px;
   }
-
-  nav {
-    padding: 1% 0;
-    background-color: green;
-    height: 40px;
-  }
-
-  nav > a {
-    color: white;
-    text-decoration: none; 
-  }
-
-  nav > a:hover {
-    color: black;
-  }
+  
+}

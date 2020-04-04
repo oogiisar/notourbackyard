@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { CountryDropdown, RegionDropdown } from 'react-country-region-selector';
+import './css/CountrySelector.css'
  
  
 class CountrySelector extends Component {
@@ -19,14 +20,17 @@ class CountrySelector extends Component {
 
         if(country !== 'World' ) {
             return (
-                <label>
-                    Region: 
+                <>
+                    <label className='country_region_label'>
+                        Region: 
+                    </label>
                     <RegionDropdown
+                        classes='country_region_box'
                         country={country}
                         value={region}
                         onChange={(val) => this.selectRegion(val)} 
                     />
-                </label>
+                </>
             )
         }
     }
@@ -34,19 +38,19 @@ class CountrySelector extends Component {
   render () {
 
     return (
-        <div>
-            
-            <label>
+        <section className='country_selector'>
+            <label className='country_region_label'>
                 Country: 
-                <CountryDropdown
+            </label>
+            <CountryDropdown
+                    classes='country_region_box'
                     showDefaultOption={false}
                     value={this.props.country}
                     onChange={(val) => this.selectCountry(val)} 
                 />
-            </label>
             {this.renderRegion()}
 
-        </div>
+        </section>
     );
   }
 }

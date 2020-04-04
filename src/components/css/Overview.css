@@ -1,0 +1,60 @@
+.overview {
+    text-align: center;
+    margin-top: 50px;
+    padding: 20px;
+    background-color: rgba( 255, 255, 255, .5) ;
+    border: 3px solid rgba(0,0,0, .2);
+    border-radius: 5px;
+}
+
+.overview h1 {
+    font-size: 2em;
+    font-weight: 400;
+}
+
+.overview h3 {
+    font-size: 1.25em;
+    font-weight: 300;
+}
+
+.country_selector {
+    margin-top: 40px;
+}
+
+#garbage_count {
+    font-size: 1.2em;
+}
+
+@media only screen and (min-width: 650px) {
+    .overview {
+        margin: 20px auto;
+        width: 75%;
+    }
+    .overview h1 {
+        font-size: 3em;
+        font-weight: 500;
+    }
+    
+    .overview h3 {
+        font-size: 2em;
+        font-weight: 400;
+    }
+    
+    
+    #garbage_count {
+        font-size: 1.5em;
+    }
+
+    #top5 { 
+        margin: 20px 0 5px 40px;
+        font-size: 1.4em;
+    }
+    #top5_list {
+        margin: 0 auto;
+    }
+
+    .country_region_label {
+        font-size: 1.3em;
+    }
+    
+}

@@ -15,7 +15,8 @@ class RegistrationForm extends Component {
     super(props)
     this.state = { 
       error: null,
-      country: ''
+      country: '--',
+      success: null
     }
   }
 
@@ -46,6 +47,9 @@ class RegistrationForm extends Component {
   .catch(res => {
     this.setState({ error: res.error })
   })
+
+  this.setState({success: 'Your user has been added'})
+
 }
 
   render() {
@@ -58,10 +62,11 @@ class RegistrationForm extends Component {
       >
         <div role='alert'>
           {error && <p className='red'>{error}</p>}
+          {this.state.success == null ? <></> : <p className='success'>{this.state.success}</p>}
         </div>
         <div className='display_name'>
           <label htmlFor='RegistrationForm__display_name'>
-            Display Name <Required />
+            Name <Required />
           </label>
           <Input
             name='display_name'
@@ -94,10 +99,11 @@ class RegistrationForm extends Component {
         </div>
         <div className='home_country'>
           <label htmlFor='RegistrationForm__home_country'>
-            Home  Country
+            Home  Country <Required />
           </label>
           <div>
             <CountryDropdown
+              classes='country_region_box'
               value={country}
               name="home_country"
               onChange={(val) => this.selectCountry(val)}

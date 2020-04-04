@@ -1,25 +1,3 @@
-.myCleanups {
-    text-align: center;
-}
-#cleanupBox {
-    width: 100%;
-}
-.cleanup {
-    border: 1px solid black;
-    border-radius: 5px;
-    width: 90%;
-    text-align: center;
-    margin: 20px auto;
-}
-.itemBlock {
-    display: inline-block;
-    padding: 20px;
-}
-
-.quantity {
-    width: 40px;
-}
-
 .status {
     color: red;
 }

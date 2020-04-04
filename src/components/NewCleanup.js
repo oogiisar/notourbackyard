@@ -11,7 +11,7 @@ class NewCleanup extends Component {
     constructor(props){
         super(props)
         this.state = {
-            status: '',
+            status: null,
             country: '',
             region: '',
             typeList: []
@@ -75,36 +75,30 @@ class NewCleanup extends Component {
     renderLocation () {
 
         return (
-            <div>
-            
-                <label>
-                Country: 
-                    <CountryDropdown
-                        
-                        value={this.state.country}
-                        name="country"
-                        required
-                        style={{
-                            width: '70px'
-                        }}
-                        onChange={(val) => this.selectCountry(val)} 
-                    />
+            <>
+                <label className='country_region_label'>
+                    Country: 
                 </label>
-                <label>
-                Region: 
-                    <RegionDropdown
-                        country={this.state.country}
-                        value={this.state.region}
-                        name="region"
-                        required
-                        style={{
-                            width: '70px'
-                        }}
-                        onChange={(val) => this.selectRegion(val)} 
-                    />
+                <CountryDropdown
+                    classes='country_region_box'
+                    value={this.state.country}
+                    name="country"
+                    required
+                    onChange={(val) => this.selectCountry(val)} 
+                />
+                <label className='country_region_label'>
+                    Region: 
                 </label>
+                <RegionDropdown
+                    classes='country_region_box'
+                    country={this.state.country}
+                    value={this.state.region}
+                    name="region"
+                    required
+                    onChange={(val) => this.selectRegion(val)} 
+                />
 
-            </div>
+            </>
 
         )
     }
@@ -125,7 +119,7 @@ class NewCleanup extends Component {
                 <div className="itemBlock">
                     <h3><Required />Type of Trash </h3>
                     <p className="cleanup_item">
-                        <select name="type_of_trash" required>
+                        <select name="type_of_trash" className='country_region_box' required>
                             <option value="">--</option>
                             {this.state.typeList.length === 0 ? '' : this.typeList()}
                         </select>
@@ -133,7 +127,7 @@ class NewCleanup extends Component {
                 </div>
                 <div className="itemBlock">
                     <h3><Required />Quantity </h3>
-                    <input type="number" name="quantity" className="cleanup_item quantity" min="1" max="99" required/>
+                    <input type="number" name="quantity" className="country_region_box" min="1" max="99" required/>
                 </div>
             </section>
 
@@ -143,7 +137,7 @@ class NewCleanup extends Component {
                 className="myCleanups"
             >
                 <h1>My Cleanups</h1>
-                <h2 className='status'>{this.state.status}</h2>
+                {this.state.status == null ? <></> : <p className='success'>{this.state.status}</p>}
                 <section id="cleanupBox">
                     {content}
                 </section>

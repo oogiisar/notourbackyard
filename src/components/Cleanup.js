@@ -62,7 +62,7 @@ class Cleanup extends Component {
                     </div>
                     <div className="itemBlock">
                         <h3>Quantity</h3>
-                        <p className="cleanup_item">{cleanup.quantity}</p>
+                        <p className="cleanup_item">{cleanup.quantity.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} kg</p>
                     </div>
                 </section>
             )

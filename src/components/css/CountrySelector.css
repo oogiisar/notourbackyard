@@ -1,0 +1,40 @@
+.country_region_label{
+    display: block;
+    text-align: left;
+    margin-left: 10%;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.country_region_box {
+    width: 80%;
+    height: 30px;
+    background-color: rgb(229, 242, 82);
+    border: 1px solid grey;
+    padding-left: 5%;
+    margin-bottom: 10px;
+    font-size: 1em;
+}
+
+.country_region_box:hover {
+    background-color: rgb(98, 165, 48);
+    transition: 0.3s;
+}
+
+#top5 {
+    text-align: left;
+    margin: 15px 10% 5px;
+    font-size: 1.3em;
+    font-weight: 600;  
+}
+
+.top5 {
+    list-style:  none;
+    text-align: left;
+    font-size: 1.2em;
+}
+
+#garbage_count {
+    text-align: left;
+    margin-left: 10%;
+}

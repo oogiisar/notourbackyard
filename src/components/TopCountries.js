@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import notOurBackyardApiService from '../services/notourbackyard-api-service';
+import './css/Overview.css'
 
 class TopCountries extends Component {
 
@@ -23,7 +24,7 @@ class TopCountries extends Component {
             return ''
         } else {
             topCountries = this.state.countries.map( (country, i) => (
-                <li key={i}>{country.country_name} - {country.sum.toLocaleString(navigator.language, { minimumFractionDigits: 0})}</li>
+                <li key={i} className="top5">{country.country_name} - {country.sum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} kg</li>
             ))
             return topCountries
         }
@@ -32,12 +33,12 @@ class TopCountries extends Component {
     render() {
 
         return(
-            <>
-                <p>The Top 5 countries are</p>
+            <div id="top5_list">
+                <p id="top5">Top 5 Countries:</p>
                 <ul>
                     {this.getCountries()}
                 </ul>
-            </>
+            </div>
         )
     };
 }

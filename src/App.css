@@ -1,9 +1,13 @@
 * {
-    font-family: Lato, "Open Sans", Menlo, sans-serif;
+    font-family: roboto, helvetica, sans-serif;
     box-sizing: border-box;
     margin: 0;
 }
 
 #content {
     padding: 20px;
+    background-image: url('./img/background.jpg');
+    background-size: cover;
+    overflow-x: scroll;
+    height: 100%;
 }

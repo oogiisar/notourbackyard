@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import TokenService from '../services/token-service'
+import logo from '../img/logo.png'
 import './css/Header.css';
 
 class Header extends Component {
@@ -27,7 +28,7 @@ class Header extends Component {
     render() {
         return(
             <nav role="navigation">
-                <Link to='/' id="logo">Logo</Link>
+                <Link to='/' className="logo"><img className="logo" src={logo} alt="Logo" /></Link>
                 {this.accountStatus()}
             </nav>
         )

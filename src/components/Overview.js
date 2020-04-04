@@ -29,16 +29,18 @@ class Overview extends Component {
 
     render() {
         return(
-            <div className="overview_head">
+            <div className="overview">
                 <h1>Not Our Backyard</h1>
-                <h3>A place to share your efforts to clean up your community</h3>
+                <h3>Keep the Community Clean and the Earth Green</h3>
 
-                <CountrySelector 
-                    getCountry={this.getCountry}
-                    getRegion={this.getRegion}
-                    country={this.state.country}
-                    region={this.state.region}
-                />
+                <section className='country_selector'>
+                    <CountrySelector 
+                        getCountry={this.getCountry}
+                        getRegion={this.getRegion}
+                        country={this.state.country}
+                        region={this.state.region}
+                    />
+                </section>
 
                 <GarbageCount
                     country={this.state.country}
