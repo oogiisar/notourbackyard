@@ -59,19 +59,19 @@ Get the garbage types from the database
 ## Preview
 
 ### Overview
-![overview page](https://imgur.com/a/pFTLWqS "Overview Page")
+![overview page](https://i.imgur.com/Az7wQmZ.png "Overview Page")
 
 ### Signup  Page
-![signup  page](https://imgur.com/a/XQ7mbir "Signup Page")
+![signup  page](https://i.imgur.com/yfCNXd5.png "Signup Page")
 
 ### Login Page
-![login page](https://imgur.com/a/APiapi6 "Login Page")
+![login page](https://i.imgur.com/DpkE4Uc.png "Login Page")
 
 ### Cleanup Page
-![cleanup page](https://imgur.com/a/5vLjSEv "Cleanup Page")
+![cleanup page](https://i.imgur.com/FAtzUnr.png "Cleanup Page")
 
 ### Add Cleanup Page
-![new cleanup page](https://imgur.com/a/2kWZdFr "New Cleanup Page")
+![new cleanup page](https://i.imgur.com/I4vh4fO.png "New Cleanup Page")
 
 ## Built With
 * This application uses the following technology
