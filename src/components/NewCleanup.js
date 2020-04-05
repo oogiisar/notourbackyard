@@ -18,7 +18,7 @@ class NewCleanup extends Component {
         }
   
     }
-
+    // Get the garbage types from the DB as soon as component mounts
     componentDidMount() {
         notOurBackyardApiService.getTypes()
         .then(types => {
@@ -62,12 +62,12 @@ class NewCleanup extends Component {
 
     }
 
-
+    // Use state to set country and reset region to select new country region
     selectCountry (val) {
         this.setState({country: val});
         this.setState({region: ''});
     }
-    
+    //  Use state to set region selected
     selectRegion (val) {
         this.setState({region: val});
     }
@@ -121,6 +121,7 @@ class NewCleanup extends Component {
                     <p className="cleanup_item">
                         <select name="type_of_trash" className='country_region_box' required>
                             <option value="">--</option>
+                            {/* Make sure we got data back from DB and prevent errors if we didn't */}
                             {this.state.typeList.length === 0 ? '' : this.typeList()}
                         </select>
                     </p>

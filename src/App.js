@@ -20,7 +20,7 @@ class App extends Component {
 
   }
 
-
+  // Used to force rerender when someone logs in or out.
   handleLogin = (loggedIn) => {
     this.setState({
       loggedIn: loggedIn

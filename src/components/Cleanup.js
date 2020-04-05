@@ -22,6 +22,7 @@ class Cleanup extends Component {
 
     componentDidMount() {
         let user  = this.getUserId()
+        // Prevent people from browsing to users that is not their user
         if(this.props.match.params.user !== user) {
             this.props.history.push(`/${user}/cleanup`)
         }
@@ -39,6 +40,7 @@ class Cleanup extends Component {
     }
     
     formatDate(date) {
+        // Cleanup the ISO time that is provided from the DB
         date = new Date(date);
         return (date.getMonth()+1) + '/' + date.getDate() + '/' + date.getFullYear()
     }

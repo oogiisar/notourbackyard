@@ -7,10 +7,10 @@ import './css/Login.css';
 
 class LoginForm extends Component {
     
-
+    // Use the handleLogin function to update state in app to force a refresh of the header
     onLoginSuccess = (authToken) => {
         let user = TokenService.parseJwt(authToken)
-        this.props.handleLogin()
+        this.props.handleLogin('true')
         this.props.history.push(`/${user.user_is}/cleanup`)
     }
 

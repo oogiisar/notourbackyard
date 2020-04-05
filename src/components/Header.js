@@ -11,7 +11,7 @@ class Header extends Component {
         const user = token.user_is
         return user
     }
-
+    // We update state in app to refresh the header using the handleLogin callback function
     handleLogout = () => {
         sessionStorage.removeItem("client-auth-token"); 
         this.props.handleLogin('false')

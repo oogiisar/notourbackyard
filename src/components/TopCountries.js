@@ -19,7 +19,7 @@ class TopCountries extends Component {
 
     getCountries() {
         let topCountries = []
-
+        // Catch if we have not gotten data back from DB yet
         if(this.state.countries == null) {
             return ''
         } else {

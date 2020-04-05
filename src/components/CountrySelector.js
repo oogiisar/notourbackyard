@@ -6,18 +6,20 @@ import './css/CountrySelector.css';
 class CountrySelector extends Component {
     
     selectCountry (val) {
+        // Updates the dropdown for country and resets region for the new country
         this.props.getCountry(val);
         this.props.getRegion('');
     }
     
     selectRegion (val) {
+        // updates the dropdown for region
         this.props.getRegion(val);
     }
 
     renderRegion () {
         let country = this.props.country
         let region = this.props.region
-
+        // Special handling to only display country if World is selected and no region
         if(country !== 'World' ) {
             return (
                 <>

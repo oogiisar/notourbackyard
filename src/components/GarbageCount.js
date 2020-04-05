@@ -32,9 +32,11 @@ class GarbageCount extends Component {
         if(country == null) {
             return 0
         } else {
+            // Make sure we got data from the DB 
             if(this.state.amount == null || this.state.amount.length === 0) {
                 return 0
             } else {
+                // Add commas to amonts stored in DB
                 return this.state.amount[0].sum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
             }
         } 
@@ -43,6 +45,7 @@ class GarbageCount extends Component {
     location () {
         let country = this.props.country
         let region = this.props.region
+        // Special handling for text presented on world selection
         let world = country === 'World' ? 'the ' : ''
         let location = region == null ? country : country + ', ' + region
         return world + location
