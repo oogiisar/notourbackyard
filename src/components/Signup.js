@@ -107,6 +107,7 @@ class RegistrationForm extends Component {
               value={country}
               name="home_country"
               onChange={(val) => this.selectCountry(val)}
+              required
             />
           </div>
         </div>

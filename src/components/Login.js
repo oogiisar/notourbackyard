@@ -45,7 +45,12 @@ class LoginForm extends Component {
             onSubmit={this.handleSubmitJwtAuth}
         >
             <div role='alert'>
-            {error && <p className='red'>{error}</p>}
+                {error && <p className='red'>{error}</p>}
+                <div className='success'>
+                    <p>Demo Login Credentials:</p>
+                    <p>Username: user@demo.com</p>
+                    <p>Password: !QAZ2wsx</p>
+                </div>
             </div>
             <div className='email'>
             <label htmlFor='LoginForm__email'>
