@@ -12,9 +12,20 @@ class Header extends Component {
         return user
     }
 
+    handleLogout = () => {
+        sessionStorage.removeItem("client-auth-token"); 
+        this.props.handleLogin('false')
+    }
+
     accountStatus = () => {
+        // Give different options if logged in or out
         if(TokenService.hasAuthToken()) {
-            return <Link to={`/${this.getUser()}/cleanup`} className="account_nav">My Account</Link>
+            return( 
+                <>
+                    <Link to='/' onClick={this.handleLogout} className="account_nav">Logout</Link>
+                    <Link to={`/${this.getUser()}/cleanup`} className="account_nav">My Account</Link>
+                </>
+            )
         } else {
             return (
                 <>

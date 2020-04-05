@@ -31,7 +31,7 @@ class App extends Component {
     return (
       <main className='App'>
         <Header 
-          loggedIn={this.state.loggedIn}
+          handleLogin={this.handleLogin}
         />
 
         <section id="content">
