@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { CountryDropdown, RegionDropdown } from 'react-country-region-selector';
-import './css/CountrySelector.css'
+import './css/CountrySelector.css';
  
  
 class CountrySelector extends Component {

@@ -1,5 +1,5 @@
-import TokenService from './token-service'
-import config from '../config'
+import TokenService from './token-service';
+import config from '../config';
 
 const notOutBackYardApiService = {
   getTypes() {
@@ -61,4 +61,4 @@ const notOutBackYardApiService = {
   }
 }
 
-export default notOutBackYardApiService
+export default notOutBackYardApiService;

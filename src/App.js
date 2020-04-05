@@ -4,8 +4,8 @@ import Header from './components/Header';
 import Overview from './components/Overview';
 import Login from './components/Login';
 import Signup from './components/Signup';
-import PrivateRoute from './Utils/PrivateRoute'
-import PublicOnlyRoute from './Utils/PublicOnlyRoute'
+import PrivateRoute from './Utils/PrivateRoute';
+import PublicOnlyRoute from './Utils/PublicOnlyRoute';
 import Cleanup from './components/Cleanup';
 import NewCleanup from './components/NewCleanup';
 import './App.css';

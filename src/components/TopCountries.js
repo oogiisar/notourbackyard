@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import notOurBackyardApiService from '../services/notourbackyard-api-service';
-import './css/Overview.css'
+import './css/Overview.css';
 
 class TopCountries extends Component {
 
