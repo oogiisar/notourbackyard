@@ -25,6 +25,10 @@
     font-size: 1.2em;
 }
 
+#mission {
+    margin-top: 10px;
+}
+
 @media only screen and (min-width: 650px) {
     .overview {
         margin: 20px auto;
