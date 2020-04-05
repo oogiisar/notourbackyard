@@ -17,7 +17,8 @@ class Cleanup extends Component {
     getUserId() {
         const getAuthToken = TokenService.getAuthToken()
         const token = TokenService.parseJwt(getAuthToken)
-        return token.user_is
+        let user = token == null ? 'nouser' : token 
+        return user.user_is
     }
 
     componentDidMount() {
